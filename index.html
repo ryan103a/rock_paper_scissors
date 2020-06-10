@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+
+
+    <script>
+        //computer player input
+        const possible_turns = ["Rock", "Paper", "Scissors"];
+
+        function computerPlay(){
+           let computer_input = possible_turns[Math.floor(Math.random() * possible_turns.length)];
+           
+           return computer_input;
+        }
+
+        function winner(computerSelection, playerSelection){
+            computerSelection = String(computerSelection).toLowerCase();
+            playerSelection = String(playerSelection).toLowerCase();
+
+            console.log("Player: " + playerSelection + " --- " + "Computer: " + computerSelection)
+
+            if ((computerSelection == "rock" && playerSelection == "scissors") || (computerSelection == "paper" && playerSelection == "rock") || (computerSelection == "scissors" && playerSelection == "paper")){
+                let game_msg = "You lose!" + " " + computerSelection + " " + "beats" + " " + playerSelection;
+                return game_msg;
+            }
+
+            if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "scissors" && computerSelection == "paper")){
+                let game_msg = "You Win!" + " " + playerSelection + " " + "beats" + " " + computerSelection;
+                return game_msg;
+            }
+
+            if (playerSelection == computerSelection){
+                let game_msg = "You tie! You both picked " + playerSelection;
+                return game_msg;
+            }
+        }
+
+        for (let i = 0; i < 4; i++){
+            let playerSelection = prompt("Enter you selection for RPS");
+
+            console.log(winner(computerPlay(), playerSelection));
+        }
+
+    </script>
+</body> 
+</html>
